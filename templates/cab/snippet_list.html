@@ -1,7 +1,14 @@
-<p>{{ page }};
-	{% if page.has_previous %}
-	<a href="?page={{ page.previous_page_number }}">Previous Page</a>
-	{% endif %}
-	{% if page.has_next_page %}
-	<a href="?page={{ page.next_page_number }}">Next Page</a>
-	{% endif %}</p>
+<html>
+<head>
+	<title>Recent Snippet List</title>
+</head>
+<body>
+	<h2>Recent Snippets<h2>
+		{% block content %}
+		{% for object in object_list %}
+		<p><a href="{{ object.get_absolute_url }}">
+			{{ object.title }}</a></p>
+		{% endfor %}
+		{% endblock %}
+	</body>
+	</html>

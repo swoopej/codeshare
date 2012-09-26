@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Language Index</title>
+</head>
+<body>
+	<p><h2>Language Index</h2><p>
+	{% block content %}
+	{% for object in object_list %}
+		<p><a href="{{ object.get_absolute_url }}">
+			{{ object.name }}</a></p>
+	{% endfor %}
+	{% endblock %}
+</body>
+</html>

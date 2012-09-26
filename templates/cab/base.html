@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>Cab Codeshare {% block title %}{% endblock %}</title>
+	    <style type="text/css">
+        #header {
+        	font-family:"Helvetica", Times, serif;
+            width: 800px;
+            margin: 0 20px 1em 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        #content {
+        	font-family:"Helvetica", Times, serif;
+        	font-size: .9em;
+            width: 550px;
+            margin: 0 20px;
+            float: left;
+        }
+        #sidebar {
+        	font-family:"Helvetica", Times, serif;
+        	font-size:.9em;
+            width: 230px;
+            float: left;
+        }
+        h2 {
+        	font-size:1.1em;
+        }
+    </style>
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+	<div id ="header">
+		<h1 id="branding">Cab Codeshare</h1>
+	</div>
+	<div id ="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+	<div id ="sidebar">
+		<h2>Navigation</h2>
+		</ul>
+		<h2>What is this?<h2>
+		{% block whatis %}
+		{% endblock %}
+	</div>
+</body>
+</html>
