@@ -26,6 +26,7 @@ def add_snippet(request):
 							   context_instace = RequestContext(request))
 add_snippet = login_required(add_snippet)
 
+#edit snippet method
 def edit_snippet(request, snippet_id):
 	snippet = get_object_or_404(Snippet, pk=snippet_id)
 	if request.user.id != snippet.author.id:

@@ -7,22 +7,22 @@ from markdown import markdown
 import datetime
 from django.db.models import Sum
 
-# Create your models here.
 
 class Language(models.Model):
-	objects = managers.LanguageManager()
-	name = models.CharField(max_length = 100)
-	slug = models.SlugField(unique = True)
-	language_code = models.CharField(max_length = 50)
-	mime_type = models.CharField(max_length = 100)
-
-	#order by name
-	class Meta:
+    
+    #database fields
+    objects = managers.LanguageManager()
+    name = models.CharField(max_length = 100)
+    slug = models.SlugField(unique = True)
+    language_code = models.CharField(max_length = 50)
+    mime_type = models.CharField(max_length = 100)
+    
+    class Meta:
 		ordering = ['name']
 
-#all django model classes should define and return a unicode representation of the class
-	def __unicode__(self):
-		return self.name
+    #all django model classes should define and return a unicode representation of the class
+    def __unicode__(self):
+        return self.name
 
 	def get_absolute_url(self):
 		return('cab_language_detail', (), { 'slug': self.slug })
