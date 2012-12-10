@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+
 from django.views.generic.list_detail import object_list
 from cab.models import Language
 from cab.views.languages import language_detail
@@ -11,7 +12,7 @@ urlpatterns = patterns('',
 							object_list,
 							language_info,
 							name='cab_language_list'),
-						url(r'^(?P<slug>[-w]+)/$',
+						url(r'^(?P<slug>\w+)/$',
 							language_detail,
 							name = 'cab_language_detail'),
 						)

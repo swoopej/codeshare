@@ -9,7 +9,7 @@ from django.template import RequestContext
 class SnippetForm(ModelForm):
 	class Meta:
 		model = Snippet
-		exclude = ['author']
+        exclude = ['author', 'slug']
 
 def add_snippet(request):
 	if request.method == 'POST':
@@ -23,7 +23,7 @@ def add_snippet(request):
 		form = SnippetForm()
 	return render_to_response('cab/snippet_form.html',
 							   { 'form': form, 'add': True },
-							   context_instace = RequestContext(request))
+							   context_instance = RequestContext(request))
 add_snippet = login_required(add_snippet)
 
 #edit snippet method

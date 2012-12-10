@@ -1,9 +1,8 @@
 <html>
 <head>
-	<title>Add a snippet</title>
+	<title>Add a Snippet</title>
 </head>
 <body>
-	<h1>Add a snippet</h1>
 	<p>Use the form below to submit your snippet; all fields are required</p>
 	<form method="post" action="">
 		<p>{% if form.title.errors %}
@@ -42,6 +41,7 @@
 		<p><label for="id_tags">Tags: </label>
 			{{ form.tags }}</p>
 		<p><input type="submit" value="Submit"></p>
+		{% csrf_token %}
 	</form>
 </body>
 </html>

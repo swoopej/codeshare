@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from markdown import markdown
 import datetime
 from django.db.models import Sum
+from django.core.urlresolvers import reverse
 
 
 class Language(models.Model):
@@ -17,25 +18,27 @@ class Language(models.Model):
     language_code = models.CharField(max_length = 50)
     mime_type = models.CharField(max_length = 100)
     
-    class Meta:
-		ordering = ['name']
+
 
     #all django model classes should define and return a unicode representation of the class
     def __unicode__(self):
         return self.name
 
 	def get_absolute_url(self):
-		return('cab_language_detail', (), { 'slug': self.slug })
-		get_absolute_url = models.permalink(get_absolute_url)
+		return (reverse('cab_language_detail', (), { 'slug': self.slug }))
+		#get_absolute_url = models.permalink(get_absolute_url)
 
 	def get_lexer(self):
 		return lexers.get_lexer_by_name(self.language_code)
 
+	 #    class Meta:
+		# ordering = ['name']
+
 class Snippet(models.Model):
 	objects = managers.SnippetManager()
 	title = models.CharField(max_length = 255)
-	slug = models.SlugField(unique = True)
-	language = models.ForeignKey(Language)
+	#slug = models.SlugField(unique = True, editable = False)
+	language = models.ForeignKey(Language) #many to one
 	author = models.ForeignKey(User)
 	description = models.TextField()
 	description_html = models.TextField(editable = False)
@@ -65,10 +68,10 @@ class Snippet(models.Model):
 		self.description_html = markdown(self.description)
 		self.highlighted_code = self.highlight()
 		super(Snippet, self).save(force_insert, force_update)
- 
+ 	
 	def get_absolute_url(self):
-		return ('cab_snippet_detail', (), { 'object_id': self.id })
-		get_absolute_url = models.permalink(get_absolute_url)
+		return (reverse('cab_snippet_detail', (), { 'object_id': self.id }))
+		#get_absolute_url = models.permalink(get_absolute_url)
 
 class Bookmark(models.Model):
 	snippet = models.ForeignKey(Snippet)

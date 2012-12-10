@@ -4,6 +4,15 @@
 		<h1>Your Bookmarks</h1>
 </head>
 <body>
+	{% block content %}
+	{% for object in object_list %}
+	<p><a href="{{ object.get_absolute_url }}">
+		{{ object.title }}</a></p>
+	{% endfor %}
+	{% endblock %}
 
+	{% block whatis %}
+	<p>This is a list of your {{ object_list.count }} bookmarks.  They are highly indicative of your character.</p>
+	{% endblock %}
 </body>
 </html>

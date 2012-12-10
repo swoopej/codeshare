@@ -5,10 +5,12 @@
 <body>
 	<h2>Recent Snippets<h2>
 		{% block content %}
+		<ul>
 		{% for object in object_list %}
-		<p><a href="{{ object.get_absolute_url }}">
-			{{ object.title }}</a></p>
+		<li><a href="{{ object.get_absolute_url }}">
+			{{ object.title }}</a></li>
 		{% endfor %}
+	</ul>
 		{% endblock %}
 	</body>
 	</html>

@@ -1,4 +1,4 @@
-<html>
+ <html>
 <head>
 	<title>Most Bookmarked</title>
 </head>
@@ -6,7 +6,7 @@
 	<h2>Most Bookmarked</h2>
 	{% block content %}
 	{% for object in object_list %}
-		<p><a href="{{object.get_absolute_url }}">
+		<p><a href="{{ object.get_absolute_url }}">
 			{{ object.title }}</a></p>
 	{% endfor %}
 	{% endblock %}
